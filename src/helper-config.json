@@ -1,0 +1,6 @@
+{
+    "1": "mainnet",
+    "4": "rinkeby",
+    "42": "kovan",
+    "1337": "ganache"
+}
