@@ -1,3 +1,4 @@
+import { makeStyles } from "@material-ui/core"
 import { useEthers } from "@usedapp/core"
 import { constants } from "ethers"
 import brownieConfig from "../brownie-config.json"
@@ -14,7 +15,16 @@ export type Token = {
     name: string
 }
 
+const useStyles = makeStyles((theme) => ({
+    title: {
+        color: theme.palette.common.white,
+        textAlign: "center",
+        padding: theme.spacing(4)
+    }
+}))
+
 export const Main = () => {
+    const classes = useStyles()
     const { chainId } = useEthers()
     const networkName = chainId ? helperConfig[chainId] : "ganache"
     const tregonaiTokenAddress = chainId ? networkMapping[String(chainId)]["TregonaiToken"][0] : constants.AddressZero
@@ -39,5 +49,8 @@ export const Main = () => {
         }
     ]
 
-    return (<TheWallet supportedTokens={supportedTokens} />)
+    return (<>
+        <h2 className={classes.title}>Defi Staking App</h2>
+        <TheWallet supportedTokens={supportedTokens} />
+    </>)
 }
