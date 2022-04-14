@@ -30,7 +30,7 @@ export const useStakeTokens = (tokenAddress: string) => {
     const { send: stakeSend, state: stakeState } =
         useContractFunction(
             tokenFarmContract,
-            "stakeTokens",
+            "stakeToken",
             { transactionName: "Stake Tokens" }
         )
     const [amountToStake, setAmountToStake] = useState("0")
